@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Aug 31 20:13:24 2020
+Created on Thu Sep  3 21:05:24 2020
 
 @author: dcaballe
-Ej. llamada:
-http://localhost:5001/comparar?tipo=jg&a=1&b=3
-
+http://localhost:5001/calculadora?tipo=suma&a=1&b=3
 """
 from flask import Blueprint, request, jsonify
 
 
-comparar = Blueprint('comparar', __name__)
+calculadora = Blueprint('calculadora', __name__)
 
-@comparar.route('/comparar', methods=['GET'])
+@calculadora.route('/calculadora', methods=['GET'])
 def llamarServicioSet():
     global tipo,tiporet,a,b,cretrun
     ##try:
@@ -43,27 +41,22 @@ def accesoSet(tipo,a,b):
 
     try:
         print(tipo)
-        if tipo == 'jg' or tipo == 'JG':
-            print("JG")
-            tiporet="jg"
-            if a > b:
-                cretrun="Es mayor"
-                print(cretrun)
-            else:
-                cretrun="No es mayor"
-                print(cretrun)
-        elif tipo =='jl' or tipo =='JL':
-            print("JL")
-            tiporet="jl"
-        elif tipo == 'je' or tipo =='JE':
-            print("JE")
-            tiporet="je"
-        elif tipo == 'jge' or tipo == 'JGE':
-            print("JGE")
-            tiporet="jge"
+        if tipo == 'suma':
+            print("suma")
+            tiporet="suma"
+            cretrun=(int(a)+int(b))
+        elif tipo =='resta':
+            print("resta")
+            tiporet="resta"
+        elif tipo == 'mul':
+            print("mul")
+            tiporet="mul"
+        elif tipo == 'div':
+            print("div")
+            tiporet="div"
         else:
             print("No definido")
-            tiporet="JG,JL,JE,JGE"
+            tiporet="suma,resta,mul,div"
             codRes = 'ERROR'
             menRes = 'Valores Adminitidos'
             

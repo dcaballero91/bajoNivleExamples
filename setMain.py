@@ -10,11 +10,13 @@ Created on Mon Aug 31 20:11:32 2020
 from flask import Flask, jsonify, request
 from Template import Template
 from comparar import comparar
+from calculadora import calculadora
 app = Flask(__name__) 
 
 ##servicios rest
 app.register_blueprint(Template)
 app.register_blueprint(comparar)
+app.register_blueprint(calculadora)
 @app.route('/', methods=['GET'])
 def hello():
     return 'Unida 2020!'
